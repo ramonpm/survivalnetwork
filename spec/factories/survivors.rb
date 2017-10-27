@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :survivor do
-    name "MyString"
-    age 1
-    gender "MyString"
-    last_location "MyString"
+    name 'Max Chow'
+    age 28
+    gender "M"
+    last_location "16.446622,15.996094"
   end
 end

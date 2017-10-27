@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :flag do
-    reporter_id nil
-    infected_id nil
+    reporter_id 1
+    infected_id 2
   end
 end

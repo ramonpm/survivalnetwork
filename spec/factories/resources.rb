@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :resource do
-    name "MyString"
-    points 1
-    survivor_id nil
+    name "Water"
+    points 4
+    survivor_id 1
   end
 end
