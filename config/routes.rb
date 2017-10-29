@@ -6,4 +6,6 @@ Rails.application.routes.draw do
       put 'update-location'
     end
   end
+
+  resources :flags
 end

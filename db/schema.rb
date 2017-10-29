@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171025163332) do
+ActiveRecord::Schema.define(version: 20171029200546) do
 
   create_table "flags", force: :cascade do |t|
     t.integer "reporter_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171025163332) do
     t.string "last_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "infected", default: false
   end
 
 end
