@@ -8,4 +8,10 @@ class Survivor < ApplicationRecord
     validates :resources, presence: true
 
     accepts_nested_attributes_for :resources
+
+    # before_validation :test
+
+    # def test
+    #     puts self.inspect
+    # end
 end

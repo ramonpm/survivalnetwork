@@ -4,9 +4,19 @@ class SurvivorsController < ApplicationController
         json_response(survivor, :created)
     end
 
+    def update_location
+        survivor = Survivor.find(params[:id])
+        survivor.update!(location_param)
+        json_response(survivor, :ok)
+    end
+
     private
 
     def survivor_params
         params.permit(:name, :age, :gender, :last_location, :resources_attributes => [:name, :points])
+    end
+
+    def location_param
+        params.permit(:last_location)
     end
 end
