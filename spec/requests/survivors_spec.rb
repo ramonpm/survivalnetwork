@@ -9,12 +9,10 @@ RSpec.describe 'Survivors requests:', type: :request do
                   last_location: '36.800488,-89.121094',
                   resources_attributes: [
                       {
-                          name: 'Water',
-                          points: 4
+                          name: 'Water'
                       },
                       {
-                          name: 'Ammunition',
-                          points: 1
+                          name: 'Ammunition'
                       }
                   ]
               }
