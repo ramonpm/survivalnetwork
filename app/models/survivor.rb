@@ -20,12 +20,35 @@ class Survivor < ApplicationRecord
     db_trading_resources = []
     # checking if the survivor has the needed amount
     points_by_type.each do |key, value|
-      owns = self.resources.where(name: key)
+      owns = resources.where(name: key)
       return nil if owns.count < value
       # separating the resources to trade
       db_trading_resources += owns.take(value)
     end
     db_trading_resources
+  end
+
+  def self.infection_report
+    all = Survivor.all
+    infected = all.where(infected: true).count
+    infected = (infected.to_f / all.count.to_f) * 100
+    { infected: "#{infected}%", non_infected: "#{100 - infected}%" }
+  end
+
+  def self.resource_per_survivor_report
+    result = ActiveRecord::Base.connection.execute('SELECT t.name, AVG(t.qty) as average
+                              FROM (SELECT r.name, r.survivor_id, COUNT(id) as qty
+                                    FROM resources r GROUP BY r.name, r.survivor_id) t
+                              GROUP BY t.name')
+    report = {}
+    result.each do |r|
+      report[r['name']] = r['average']
+    end
+    report
+  end
+
+  def self.lost_points_report
+    {lost_points: Survivor.where(infected: true).joins(:resources).sum('resources.points')}
   end
 
   # before_validation :test
