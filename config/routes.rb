@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     get 'reports/average-resources-per-survivor', to: 'reports#resource_per_survivor'
     get 'reports/lost-points', to: 'reports#lost_points'
   end
+
+  root 'doc#root'
 end
