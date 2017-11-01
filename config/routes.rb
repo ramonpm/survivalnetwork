@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :trades
 
     get 'reports/infections', to: 'reports#infections'
-    get 'reports/resource-per-survivor', to: 'reports#resource_per_survivor'
+    get 'reports/average-resources-per-survivor', to: 'reports#resource_per_survivor'
     get 'reports/lost-points', to: 'reports#lost_points'
   end
 end

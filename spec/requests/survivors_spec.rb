@@ -59,7 +59,7 @@ RSpec.describe 'Survivors requests:', type: :request do
 
     context 'with valid input' do
       let(:new_location) { '32.800488,-82.121094' }
-      before { put "/survivors/#{survivor.id}/update-location", params: { last_location: new_location } }
+      before { put "/survivors/#{survivor.id}/update-location", params: { location: new_location } }
 
       it 'saves the new location' do
         expect(json['last_location']).to eq(new_location)
@@ -71,7 +71,7 @@ RSpec.describe 'Survivors requests:', type: :request do
     end
 
     context 'without the new location' do
-      before { put "/survivors/#{survivor.id}/update-location", params: { last_location: '' } }
+      before { put "/survivors/#{survivor.id}/update-location", params: { location: '' } }
 
       it 'returns an error response' do
         expect(response).to have_http_status(422)

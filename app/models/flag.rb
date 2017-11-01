@@ -4,6 +4,8 @@ class Flag < ApplicationRecord
 
   after_create :mark_infected
 
+  validates :reporter, uniqueness: { scope: :infected }
+
   def mark_infected
     if infected.flags.size >= 3
       infected.infected = true

@@ -1,4 +1,8 @@
 class SurvivorsController < ApplicationController
+   def index
+    json_response(Survivor.all)
+   end 
+   
     def create
         survivor = Survivor.create!(survivor_params)
         json_response(survivor, :created)
@@ -6,7 +10,7 @@ class SurvivorsController < ApplicationController
 
     def update_location
         survivor = Survivor.find(params[:id])
-        survivor.update!(location_param)
+        survivor.update!(last_location: location_param[:location])
         json_response(survivor, :ok)
     end
 
@@ -17,6 +21,6 @@ class SurvivorsController < ApplicationController
     end
 
     def location_param
-        params.permit(:last_location)
+        params.permit(:location)
     end
 end

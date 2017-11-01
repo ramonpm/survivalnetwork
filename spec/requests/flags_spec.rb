@@ -46,5 +46,27 @@ RSpec.describe 'Flags requests:', type: :request do
         expect(Survivor.find(infected.id).infected?).to be_truthy
       end
     end
+
+    context 'same reporter and same victim' do
+      it 'should save only one report' do
+        post '/flags', params: {
+          reporter_id: survivors[0].id,
+          infected_id: infected.id
+        }
+
+        post '/flags', params: {
+          reporter_id: survivors[0].id,
+          infected_id: infected.id
+        }
+
+        post '/flags', params: {
+          reporter_id: survivors[0].id,
+          infected_id: infected.id
+        }
+
+        expect(Survivor.find(infected.id).infected?).to_not be_truthy
+        expect(Flag.where(reporter: survivors[0], infected: infected).count).to eq(1)
+      end
+    end
   end
 end

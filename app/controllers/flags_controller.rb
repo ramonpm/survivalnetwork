@@ -1,4 +1,8 @@
 class FlagsController < ApplicationController
+  def index
+    json_response(Flag.all)
+  end
+
   def create
     Flag.create!(flag_params)
     head :no_content

@@ -59,7 +59,7 @@ RSpec.describe 'Reports requests:', type: :request do
     end
 
     before do
-      get '/reports/resource-per-survivor'
+      get '/reports/average-resources-per-survivor'
     end
 
     it 'should return 2 waters, 4 ammo, 3 food and 1 medication' do
