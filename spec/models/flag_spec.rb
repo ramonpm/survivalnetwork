@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Flag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to(:reporter) }
+  it { should belong_to(:infected) }
 end
