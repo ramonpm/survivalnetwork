@@ -1,0 +1,236 @@
+{
+	"info": {
+		"name": "zssn-api",
+		"_postman_id": "c7201330-0226-35d2-247e-b9d5f952c932",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "update location",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"location\": \"-5,-15\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/survivors/3/update-location",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"survivors",
+						"3",
+						"update-location"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "add survivor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Max Chow\",\n  \"age\": 28,\n  \"gender\": \"M\",\n  \"last_location\": \"36.800488,-89.121094\",\n  \"resources_attributes\": [\n    {\n      \"name\": \"Ammunition\"\n    },\n    {\n      \"name\": \"Ammunition\"\n    },\n    {\n      \"name\": \"Ammunition\"\n    },\n    {\n      \"name\": \"Ammunition\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/survivors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"survivors"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "flagging survivor as infected",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"reporter_id\": 1,\n  \"infected_id\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:3000/flags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"flags"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "trading between healthy survivors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"box_a\": {\n    \"owner_id\": 1,\n    \"resources\": [\n      {\n        \"name\": \"Water\"\n      }\n    ]\n  },\n  \"box_b\": {\n    \"owner_id\": 5,\n    \"resources\": [\n      {\n      \"name\": \"Ammunition\"\n      },\n      {\n      \"name\": \"Ammunition\"\n    },\n    {\n      \"name\": \"Ammunition\"\n    },\n    {\n      \"name\": \"Ammunition\"\n    }\n    ]\n  }\n}\n"
+				},
+				"url": {
+					"raw": "http://localhost:3000/trades",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"trades"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "list known survivors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/survivors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"survivors"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "list all flags",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/flags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"flags"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "report infections",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/reports/infections",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reports",
+						"infections"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "report average of resources per survivor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/reports/average-resources-per-survivor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reports",
+						"average-resources-per-survivor"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "report average lost points because of infection",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:3000/reports/lost-points",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"reports",
+						"lost-points"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
