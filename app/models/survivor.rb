@@ -44,7 +44,7 @@ class Survivor < ApplicationRecord
                               GROUP BY t.name')
     report = {}
     result.each do |r|
-      report[r['name']] = r['average']
+      report[r['name']] = r['average'].to_f
     end
     report
   end
