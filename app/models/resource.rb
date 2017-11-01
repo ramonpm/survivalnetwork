@@ -8,8 +8,8 @@ class Resource < ApplicationRecord
   before_validation :set_points
 
   def self.trade!(params)
-    owner_a = Survivor.find(params['box_a']['owner_id'])
-    owner_b = Survivor.find(params['box_b']['owner_id'])
+    owner_a = Survivor.healthy.find(params['box_a']['owner_id'])
+    owner_b = Survivor.healthy.find(params['box_b']['owner_id'])
     # check if the survivors have the resources
     resources_a = owner_a.trading_resources(params['box_a']['resources'])
     resources_b = owner_b.trading_resources(params['box_b']['resources'])

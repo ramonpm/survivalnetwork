@@ -1,4 +1,6 @@
 class Survivor < ApplicationRecord
+  scope :healthy, -> { where(infected: false) }
+
   has_many :resources
   has_many :reports, class_name: 'Flag', foreign_key: 'reporter_id'
   has_many :flags, class_name: 'Flag', foreign_key: 'infected_id'
@@ -48,7 +50,7 @@ class Survivor < ApplicationRecord
   end
 
   def self.lost_points_report
-    {lost_points: Survivor.where(infected: true).joins(:resources).sum('resources.points')}
+    { lost_points: Survivor.where(infected: true).joins(:resources).sum('resources.points') }
   end
 
   # before_validation :test
