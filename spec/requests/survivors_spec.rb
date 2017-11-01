@@ -31,6 +31,27 @@ RSpec.describe 'Survivors requests:', type: :request do
         expect(response).to have_http_status(201)
       end
     end
+
+    context 'without location' do
+      before do
+        post '/survivors', params: {
+          name: 'Max Chow',
+          age: 28, gender: 'M',
+          resources_attributes: [
+            {
+              name: 'Water'
+            },
+            {
+              name: 'Ammunition'
+            }
+          ]
+        }
+      end
+
+      it 'returns an error response' do
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 
   describe 'updating location' do
@@ -46,6 +67,14 @@ RSpec.describe 'Survivors requests:', type: :request do
 
       it 'returns a successful response' do
         expect(response).to have_http_status(200)
+      end
+    end
+
+    context 'without the new location' do
+      before { put "/survivors/#{survivor.id}/update-location", params: { last_location: '' } }
+
+      it 'returns an error response' do
+        expect(response).to have_http_status(422)
       end
     end
   end

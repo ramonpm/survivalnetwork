@@ -17,6 +17,10 @@ RSpec.describe 'Flags requests:', type: :request do
         expect(infected.flags.size).to be > 0
       end
 
+      it 'should keep the reported as not infected' do
+        expect(Survivor.find(infected.id).infected?).to_not be_truthy
+      end
+
       it 'returns a successful response' do
         expect(response).to have_http_status(204)
       end

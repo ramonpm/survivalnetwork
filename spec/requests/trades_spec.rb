@@ -77,5 +77,36 @@ RSpec.describe 'Trades requests:', type: :request do
         expect(response).to have_http_status(422)
       end
     end
+
+    context 'with different ammount of points' do
+      let!(:owner_a) do
+        create(:survivor, name: 'OwnerA', age: 20, gender: 'F',
+                          last_location: '16.446622,15.996094',
+                          resources_attributes: [{ name: 'Water' }])
+      end
+      let!(:owner_b) do
+        create(:survivor, name: 'OwnerB', age: 20, gender: 'F',
+                          last_location: '16.446622,15.996094',
+                          resources_attributes: [{ name: 'Ammunition' },
+                                                 { name: 'Ammunition' }])
+      end
+      before do
+        post '/trades', params: {
+          box_a: {
+            owner_id: owner_a.id,
+            resources: [{ name: 'Water' }]
+          },
+          box_b: {
+            owner_id: owner_b.id,
+            resources: [{ name: 'Ammunition' },
+            { name: 'Ammunition' }]
+          }
+        }
+      end
+
+      it 'returns an error response' do
+        expect(response).to have_http_status(422)
+      end
+    end
   end
 end
